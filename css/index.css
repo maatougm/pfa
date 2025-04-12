@@ -1,0 +1,222 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: #f4f4f4;
+}
+.est-hero {
+    margin-bottom: 40px;
+}
+
+.est-carousel {
+    position: relative;
+}
+
+.est-carousel-slide {
+    display: none;
+}
+
+.est-carousel-slide.active {
+    display: block;
+}
+
+.est-carousel-slide img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.world-cup-banner img{
+    border-radius: 10px;
+    max-width: 100%;
+}
+
+
+.est-carousel-prev,
+.est-carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+h1 {
+    color: #d50000;
+    font-size: 3em;
+    font-weight: 700;
+    
+}
+.est-carousel-prev:hover,
+.est-carousel-next:hover {
+    opacity: 1;
+}
+
+.est-carousel-prev {
+    left: 10px;
+}
+
+.est-carousel-next {
+    right: 10px;
+}
+
+.main-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Main Content Styles */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+    flex-grow: 1;
+}
+
+.main-sidebar {
+    width: 25%;
+    margin-right: 20px;
+}
+
+.main-main-section {
+    width: 75%;
+}
+
+.main-sidebar-title {
+    font-size: 1.5em;
+    color: #d50000;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.main-next-match,
+.main-standings {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-match-details p {
+    margin-bottom: 10px;
+}
+
+.main-standings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+
+.main-standings-table th,
+.main-standings-table td {
+    text-align: left;
+    padding: 7px;
+    border-bottom: 1px solid #ccc;
+    font-size: 0.8em; /* Adjust font size as needed */
+}
+
+.main-team-logo-small {
+    width: 20px; /* Adjust size as needed */
+    height: 20px;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-right: 5px; /* Add some space between logo and name */
+}
+
+
+
+.main-presidents-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.main-president {
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.main-president-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 10px;
+}
+
+.main-president-name {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #d50000;
+    margin-bottom: 5px;
+}
+
+.main-president-tenure {
+    font-size: 0.9em;
+    color: #5f6368;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .est-carousel-prev,
+    .est-carousel-next {
+        font-size: 1.5em;
+        padding: 8px;
+    }
+
+    .est-shortcuts-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    .est-shortcut-icon {
+        font-size: 2.5em;
+    }
+
+    .est-shortcut-title {
+        font-size: 1.2em;
+    }
+    .main-content {
+        flex-direction: column;
+    }
+    
+
+    .main-sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+    .world-cup-banner img{
+    max-width: 100%;
+    }
+
+    .main-main-section {
+        width: 100%;
+    }
+
+    .main-logo-slide {
+        width: 100px;
+    }
+
+    .main-president-image {
+        width: 100px;
+        height: 100px;
+    }
+}
