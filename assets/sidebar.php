@@ -1,32 +1,4 @@
-
-<style>
-    .admin-wrapper {
-        display: flex;
-        min-height: 100vh;
-    }
-    .admin-nav {
-        width: 220px;
-        background-color: #1c1c1c;
-        padding: 30px 15px;
-        color: white;
-        flex-shrink: 0;
-    }
-    .admin-nav h2 {
-        color: #fcdb03;
-        font-size: 24px;
-        margin-bottom: 30px;
-    }
-    .admin-nav a {
-        display: block;
-        color: white;
-        text-decoration: none;
-        margin-bottom: 15px;
-        font-size: 18px;
-    }
-    .admin-nav a:hover {
-        color: #fcdb03;
-    }
-</style>
+<link rel="stylesheet" href="../css/sidebar.css" />
 <?php
 if (session_status() === PHP_SESSION_NONE) session_start();
 ?>

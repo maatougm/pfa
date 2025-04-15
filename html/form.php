@@ -1,3 +1,45 @@
+<?php
+require_once '../assets/config.php';
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Récupération des données
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $age = $_POST['age'];
+    $gender = $_POST['gender'];
+    $experience = $_POST['experience'];
+    $contact = $_POST['contact'];
+    $email = $_POST['email'];
+    $emergency_contact = $_POST['emergency_contact'];
+    $address = $_POST['address'];
+    $height = $_POST['height'];
+    $weight = $_POST['weight'];
+
+    // Uploads
+    $photo_path = null;
+    if (!empty($_FILES['photo']['name'])) {
+        $photo_path = 'uploads/photos/' . basename($_FILES['photo']['name']);
+        move_uploaded_file($_FILES['photo']['tmp_name'], '../' . $photo_path);
+    }
+
+    $receipt_path = null;
+    if (!empty($_FILES['payment_receipt']['name'])) {
+        $receipt_path = 'uploads/receipts/' . basename($_FILES['payment_receipt']['name']);
+        move_uploaded_file($_FILES['payment_receipt']['tmp_name'], '../' . $receipt_path);
+    }
+
+    // Insertion en base
+    $stmt = $pdo->prepare("INSERT INTO inscriptions_academie
+        (first_name, last_name, age, gender, experience, photo, contact, email, emergency_contact, address, height, weight, payment_receipt)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->execute([
+        $first_name, $last_name, $age, $gender, $experience, $photo_path,
+        $contact, $email, $emergency_contact, $address, $height, $weight, $receipt_path
+    ]);
+
+    $success_message = "✅ Inscription enregistrée avec succès !";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -15,7 +57,11 @@
     <div class="main">
       <h1 class="player-page-title">Espérance Sportive de Tunis Academie</h1>
       <h2 class="player-subtitle">Become a Champion Join Now</h2>
-      <form action="submit" method="post">
+      <?php if (isset($success_message)): ?>
+        <p style="color: green; font-weight: bold;"><?= $success_message ?></p>
+      <?php endif; ?>
+
+      <form action="submit" method="post" enctype="multipart/form-data">
         <label for="first_name">Prénom :</label>
         <input id="first_name" name="first_name" required="" type="text" />
         <label for="last_name">Nom :</label>
