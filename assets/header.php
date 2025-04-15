@@ -1,4 +1,12 @@
-<?php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <?php
 // header.php
 ?>
 <header class="est-header">
@@ -30,7 +38,7 @@
           <a href="https://taraji-store.com/" class="est-nav-link">Shop</a>
         </li>
         <li class="est-nav-item">
-          <a href="../html/login.php" class="est-nav-link">login</a>
+          <a href="../admin/login.php" class="est-nav-link">login</a>
         </li>
       </ul>
     </nav>
@@ -41,3 +49,6 @@
     </button>
   </div>
 </header>
+
+</body>
+</html>

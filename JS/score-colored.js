@@ -1,5 +1,11 @@
 <?php
 require_once '../assets/config.php';
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header('Location: login.php');
+    exit;
+}
 
 $scores = $pdo->query("SELECT * FROM scores ORDER BY date DESC")->fetchAll(PDO::FETCH_ASSOC);
 ?>

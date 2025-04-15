@@ -3,20 +3,24 @@ session_start();
 $error = '';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    require_once '../assets/config.php'; // make sure this file contains your DB connection as $pdo
+    require_once '../assets/config.php'; // Connexion DB via $pdo
 
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Fetch user by username
+    // Rechercher l'utilisateur
     $stmt = $pdo->prepare("SELECT * FROM admins WHERE username = ?");
     $stmt->execute([$username]);
     $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Verify user
+    // Vérification
     if ($admin && $admin['password'] === $password) {
-        $_SESSION['admin'] = $admin;
-        header("Location: ../admin/panel.php"); // redirect to admin panel
+        $_SESSION['admin'] = [
+            'id' => $admin['id'],
+            'username' => $admin['username'],
+            'permission' => $admin['permission']
+        ];
+        header("Location: ../admin/panel.php");
         exit;
     } else {
         $error = "Nom d'utilisateur ou mot de passe incorrect.";
